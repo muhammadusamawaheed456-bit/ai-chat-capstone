@@ -131,8 +131,7 @@ return (
       onScroll={handleScroll}
       className="flex-1 overflow-y-auto"
     >
-      <div className="mx-auto flex w-full max-w-3xl flex-col space-y-8 px-4 pt-10 pb-8">
-        {messages.length === 0 && (
+      <div className="mx-auto flex w-full max-w-3xl flex-col space-y-4 px-3 pt-5 pb-4">
           <div className="flex min-h-[60vh] flex-col items-center justify-center text-center">
             <div className="mb-4 rounded-full bg-indigo-500/20 p-5 text-3xl">
               ✨

@@ -55,8 +55,8 @@ export function ChatInput({
     return (
     <form
       onSubmit={handleSubmit}
-      className="sticky bottom-0 border-t border-white/10 bg-[#060B1A]/90 p-4 backdrop-blur-xl"
-    >
+      
+    >className="sticky bottom-3 border-t border-white/10 bg-[#060B1A]/90 px-3 py-3 backdrop-blur-xl"
       <div className="mx-auto flex max-w-3xl items-end gap-3">
         <textarea
           ref={textareaRef}
@@ -71,7 +71,7 @@ export function ChatInput({
           disabled={disabled}
           className="
             max-h-40
-            min-h-[56px]
+            min-h-[48px]
             flex-1
             resize-none
             rounded-3xl
@@ -79,7 +79,7 @@ export function ChatInput({
             border-slate-700
             bg-slate-900
             px-5
-            py-4
+            py-3
             text-sm
             text-slate-100
             placeholder:text-slate-500
