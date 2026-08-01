@@ -52,45 +52,66 @@ export function ChatInput({
   // classes so no extra JS state is needed for those two.
   const canSend = !isStreaming && value.trim().length > 0 && !disabled;
 
-  return (
+    return (
     <form
       onSubmit={handleSubmit}
-      className="sticky bottom-0 bg-[#060B1A]/90 backdrop-blur-xl border-t border-white/10 p-4"
+      className="sticky bottom-0 border-t border-white/10 bg-[#060B1A]/90 p-4 backdrop-blur-xl"
     >
-      <textarea
-        ref={textareaRef}
-        value={value}
-        onChange={(e) => {
-          onChange(e.target.value);
-          autoResize();
-        }}
-        onKeyDown={handleKeyDown}
-        placeholder="Message the assistant…"
-        rows={1}
-        disabled={disabled}
-        className="max-h-40 flex-1 resize-none rounded-2xl bg-slate-900 px-4 py-2.5 text-sm text-slate-100 placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 disabled:opacity-50"
-        
-      />
-      <button
-        type={isStreaming ? "button" : "submit"}
-        onClick={isStreaming ? onStop : undefined}
-        disabled={!isStreaming && !canSend}
-        aria-label={isStreaming ? "Stop generating" : "Send message"}
-        className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-full text-white transition
-          ${
-            isStreaming
-              ? "bg-rose-500 hover:bg-rose-400 active:scale-95"
-              : canSend
-                ? "bg-indigo-500 hover:bg-indigo-400 active:scale-95"
-                : "cursor-not-allowed bg-slate-700 text-slate-500"
-          }`}
-      >
-        {isStreaming ? <StopIcon /> : <SendIcon />}
-      </button>
-    </form>
-  );
-}
+      <div className="mx-auto flex max-w-3xl items-end gap-3">
+        <textarea
+          ref={textareaRef}
+          value={value}
+          onChange={(e) => {
+            onChange(e.target.value);
+            autoResize();
+          }}
+          onKeyDown={handleKeyDown}
+          placeholder="Message the assistant…"
+          rows={1}
+          disabled={disabled}
+          className="
+            max-h-40
+            min-h-[56px]
+            flex-1
+            resize-none
+            rounded-3xl
+            border
+            border-slate-700
+            bg-slate-900
+            px-5
+            py-4
+            text-sm
+            text-slate-100
+            placeholder:text-slate-500
+            focus:outline-none
+            focus:ring-2
+            focus:ring-indigo-500
+            disabled:opacity-50
+          "
+        />
 
+        <button
+          type={isStreaming ? "button" : "submit"}
+          onClick={isStreaming ? onStop : undefined}
+          disabled={!isStreaming && !canSend}
+          aria-label={isStreaming ? "Stop generating" : "Send message"}
+          className={`flex h-12 w-12 shrink-0 items-center justify-center rounded-full text-white transition
+            ${
+              isStreaming
+                ? "bg-rose-500 hover:bg-rose-400 active:scale-95"
+                : canSend
+                  ? "bg-indigo-500 hover:bg-indigo-400 active:scale-95"
+                  : "cursor-not-allowed bg-slate-700 text-slate-500"
+            }`}
+        >
+          {isStreaming ? <StopIcon /> : <SendIcon />}
+        </button>
+      </div>
+    </form>
+    
+  );
+  
+}
 function SendIcon() {
   return (
     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
@@ -98,7 +119,6 @@ function SendIcon() {
     </svg>
   );
 }
-
 
 function StopIcon() {
   return (
