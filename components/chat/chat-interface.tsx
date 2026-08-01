@@ -98,16 +98,39 @@ export function ChatInterface() {
   const handleStop = () => stop();
 
   return (
-    <div className="flex h-full flex-col">
+    <div className="flex h-[100dvh] flex-col bg-[#060B1A]">
       <div
         ref={scrollRef}
         onScroll={handleScroll}
-        className="flex-1 space-y-3 overflow-y-auto px-3 py-4 sm:px-6"
+        className="flex-1 overflow-y-auto"
       >
+        <div
+  ref={scrollRef}
+  className="flex-1 overflow-y-auto"
+>
+  <div className="mx-auto flex w-full max-w-3xl flex-col space-y-6 px-4 py-6">
+
+    {/* messages */}
+
+  </div>   {/* ← close the max-width wrapper */}
+</div>
+</div>
+
         {messages.length === 0 && (
-          <p className="mx-auto max-w-sm pt-12 text-center text-sm text-slate-500">
-            Say hello to start the conversation.
-          </p>
+        <div className="flex h-full flex-col items-center justify-center text-center">
+  <div className="mb-4 rounded-full bg-indigo-500/20 p-5 text-3xl">
+    ✨
+  </div>
+
+  <h2 className="text-2xl font-semibold text-white">
+    Streaming Chat
+  </h2>
+
+  <p className="mt-2 max-w-md text-slate-400">
+    Powered by AI SDK with real-time streaming responses.
+    Start a conversation below.
+  </p>
+</div>
         )}
 
         {messages.map((message, i) => {
@@ -144,7 +167,7 @@ export function ChatInterface() {
         <div className="flex justify-center">
           <button
             onClick={() => scrollToBottom()}
-            className="mb-2 -mt-2 rounded-full bg-slate-800 px-4 py-1.5 text-xs font-medium text-slate-200 shadow-lg transition hover:bg-slate-700"
+           className="fixed bottom-28 left-1/2 z-50 -translate-x-1/2 rounded-full border border-slate-700 bg-slate-900/90 px-5 py-2 text-sm text-white shadow-2xl backdrop-blur transition hover:scale-105"
           >
             ↓ Jump to latest
           </button>

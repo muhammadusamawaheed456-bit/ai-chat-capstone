@@ -15,15 +15,15 @@ export function MessageBubble({ role, text, isPending }: MessageBubbleProps) {
 
   return (
     <div
-      className={`flex w-full animate-fade-in-up ${
+      className={`flex w-full transition-all duration-300 ${
         isUser ? "justify-end" : "justify-start"
       }`}
     >
       <div
-        className={`max-w-[85%] rounded-2xl px-4 py-2.5 sm:max-w-[70%] ${
+        className={`max-w-[80%] rounded-3xl px-4 py-2.5 sm:max-w-[70%] ${
           isUser
-            ? "bg-indigo-500 text-white"
-            : "bg-slate-800 text-slate-100"
+            ? "bg-gradient-to-r from-indigo-500 to-violet-600 text-white"
+            : "bg-slate-900 border border-slate-700 shadow-lg text-slate-100"
         }`}
       >
         {/* Both states live in the same bubble so the transition from

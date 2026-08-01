@@ -55,7 +55,7 @@ export function ChatInput({
   return (
     <form
       onSubmit={handleSubmit}
-      className="flex items-end gap-2 border-t border-slate-800 bg-slate-950/95 p-3 pb-[max(0.75rem,env(safe-area-inset-bottom))] sm:p-4"
+      className="sticky bottom-0 bg-[#060B1A]/90 backdrop-blur-xl border-t border-white/10 p-4"
     >
       <textarea
         ref={textareaRef}
@@ -68,14 +68,15 @@ export function ChatInput({
         placeholder="Message the assistant…"
         rows={1}
         disabled={disabled}
-        className="max-h-40 flex-1 resize-none rounded-xl bg-slate-900 px-4 py-2.5 text-sm text-slate-100 placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 disabled:opacity-50"
+        className="max-h-40 flex-1 resize-none rounded-2xl bg-slate-900 px-4 py-2.5 text-sm text-slate-100 placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 disabled:opacity-50"
+        
       />
       <button
         type={isStreaming ? "button" : "submit"}
         onClick={isStreaming ? onStop : undefined}
         disabled={!isStreaming && !canSend}
         aria-label={isStreaming ? "Stop generating" : "Send message"}
-        className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-full text-white transition
+        className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-full text-white transition
           ${
             isStreaming
               ? "bg-rose-500 hover:bg-rose-400 active:scale-95"
@@ -97,6 +98,7 @@ function SendIcon() {
     </svg>
   );
 }
+
 
 function StopIcon() {
   return (
