@@ -97,13 +97,41 @@ export function ChatInterface() {
   // immediately — no manual cleanup needed here.
   const handleStop = () => stop();
 return (
-  <div className="flex h-[100dvh] flex-col bg-[#060B1A]">
+  <div className="flex h-[100dvh] flex-col bg-gradient-to-b from-[#101828] via-[#0B1220] to-[#060B1A]">
+
+    {/* Header */}
+    <header className="sticky top-0 z-20 border-b border-white/10 bg-gradient-to-b from-[#101828] via-[#0B1220] to-[#060B1A]/80 backdrop-blur-xl">
+      <div className="mx-auto flex h-16 max-w-3xl items-center justify-between px-4">
+
+        <div className="flex items-center gap-3">
+          <div className="flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-r from-indigo-500 to-violet-600 text-white">
+            🤖
+          </div>
+
+          <div>
+            <h1 className="font-semibold text-white">
+              AI Assistant
+            </h1>
+
+            <p className="text-xs text-slate-400">
+              Streaming Chat
+            </p>
+          </div>
+        </div>
+
+        <span className="rounded-full bg-emerald-500/20 px-3 py-1 text-xs text-emerald-300">
+          ● Online
+        </span>
+
+      </div>
+    </header>
+
     <div
       ref={scrollRef}
       onScroll={handleScroll}
       className="flex-1 overflow-y-auto"
     >
-      <div className="mx-auto flex w-full max-w-3xl flex-col space-y-6 px-4 py-6">
+      <div className="mx-auto flex w-full max-w-3xl flex-col space-y-8 px-4 pt-10 pb-8">
         {messages.length === 0 && (
           <div className="flex min-h-[60vh] flex-col items-center justify-center text-center">
             <div className="mb-4 rounded-full bg-indigo-500/20 p-5 text-3xl">
