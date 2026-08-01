@@ -1,0 +1,27 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html,
+body {
+  height: 100%;
+}
+
+/* Respect prefers-reduced-motion globally: collapse our custom
+   entrance/pulse animations to an instant, no-motion state. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Prevent iOS Safari from zooming on input focus (keeps mobile layout stable) */
+input,
+textarea {
+  font-size: 16px;
+}
