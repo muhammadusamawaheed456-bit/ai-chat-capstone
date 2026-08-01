@@ -96,46 +96,37 @@ export function ChatInterface() {
   // back to "ready" so the input re-enables and the next send works
   // immediately — no manual cleanup needed here.
   const handleStop = () => stop();
-
-  return (
-    <div className="flex h-[100dvh] flex-col bg-[#060B1A]">
-      <div
-        ref={scrollRef}
-        onScroll={handleScroll}
-        className="flex-1 overflow-y-auto"
-      >
-        <div
-  ref={scrollRef}
-  className="flex-1 overflow-y-auto"
->
-  <div className="mx-auto flex w-full max-w-3xl flex-col space-y-6 px-4 py-6">
-
-    {/* messages */}
-
-  </div>   {/* ← close the max-width wrapper */}
-</div>
-</div>
-
+return (
+  <div className="flex h-[100dvh] flex-col bg-[#060B1A]">
+    <div
+      ref={scrollRef}
+      onScroll={handleScroll}
+      className="flex-1 overflow-y-auto"
+    >
+      <div className="mx-auto flex w-full max-w-3xl flex-col space-y-6 px-4 py-6">
         {messages.length === 0 && (
-        <div className="flex h-full flex-col items-center justify-center text-center">
-  <div className="mb-4 rounded-full bg-indigo-500/20 p-5 text-3xl">
-    ✨
-  </div>
+          <div className="flex min-h-[60vh] flex-col items-center justify-center text-center">
+            <div className="mb-4 rounded-full bg-indigo-500/20 p-5 text-3xl">
+              ✨
+            </div>
 
-  <h2 className="text-2xl font-semibold text-white">
-    Streaming Chat
-  </h2>
+            <h2 className="text-2xl font-semibold text-white">
+              Streaming Chat
+            </h2>
 
-  <p className="mt-2 max-w-md text-slate-400">
-    Powered by AI SDK with real-time streaming responses.
-    Start a conversation below.
-  </p>
-</div>
+            <p className="mt-2 max-w-md text-slate-400">
+              Powered by AI SDK with real-time streaming responses.
+              <br />
+              Start a conversation below.
+            </p>
+          </div>
         )}
 
         {messages.map((message, i) => {
           const text = message.parts
-            .filter((p): p is { type: "text"; text: string } => p.type === "text")
+            .filter(
+              (p): p is { type: "text"; text: string } => p.type === "text"
+            )
             .map((p) => p.text)
             .join("");
 
@@ -158,29 +149,24 @@ export function ChatInterface() {
           </p>
         )}
       </div>
-
-      {/* Jump-to-latest affordance: only visible once the user has
-          scrolled away from the bottom AND new content has arrived
-          below the fold — not shown just because they scrolled up to
-          re-read something with no new activity. */}
-      {hasNewBelowFold && !isPinnedToBottom && (
-        <div className="flex justify-center">
-          <button
-            onClick={() => scrollToBottom()}
-           className="fixed bottom-28 left-1/2 z-50 -translate-x-1/2 rounded-full border border-slate-700 bg-slate-900/90 px-5 py-2 text-sm text-white shadow-2xl backdrop-blur transition hover:scale-105"
-          >
-            ↓ Jump to latest
-          </button>
-        </div>
-      )}
-
-      <ChatInput
-        value={input}
-        onChange={setInput}
-        onSend={handleSend}
-        onStop={handleStop}
-        isStreaming={isStreaming}
-      />
     </div>
-  );
+
+    {hasNewBelowFold && !isPinnedToBottom && (
+      <button
+        onClick={() => scrollToBottom()}
+        className="fixed bottom-28 left-1/2 z-50 -translate-x-1/2 rounded-full border border-slate-700 bg-slate-900/90 px-5 py-2 text-sm text-white shadow-2xl backdrop-blur transition hover:scale-105"
+      >
+        ↓ Jump to latest
+      </button>
+    )}
+
+    <ChatInput
+      value={input}
+      onChange={setInput}
+      onSend={handleSend}
+      onStop={handleStop}
+      isStreaming={isStreaming}
+    />
+  </div>
+);
 }
