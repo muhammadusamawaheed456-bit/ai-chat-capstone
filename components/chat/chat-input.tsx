@@ -55,8 +55,8 @@ export function ChatInput({
     return (
     <form
       onSubmit={handleSubmit}
-      
-    >className="sticky bottom-3 border-t border-white/10 bg-[#060B1A]/90 px-3 py-3 backdrop-blur-xl"
+      className="sticky bottom-0 border-t border-white/10 bg-[#060B1A]/90 px-3 py-2 backdrop-blur-xl"
+    >
       <div className="mx-auto flex max-w-3xl items-end gap-3">
         <textarea
           ref={textareaRef}
@@ -71,7 +71,7 @@ export function ChatInput({
           disabled={disabled}
           className="
             max-h-40
-            min-h-[48px]
+            min-h-[44px]
             flex-1
             resize-none
             rounded-3xl
@@ -79,7 +79,7 @@ export function ChatInput({
             border-slate-700
             bg-slate-900
             px-5
-            py-3
+            py-2.5
             text-sm
             text-slate-100
             placeholder:text-slate-500
@@ -95,7 +95,7 @@ export function ChatInput({
           onClick={isStreaming ? onStop : undefined}
           disabled={!isStreaming && !canSend}
           aria-label={isStreaming ? "Stop generating" : "Send message"}
-          className={`flex h-12 w-12 shrink-0 items-center justify-center rounded-full text-white transition
+          className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-full text-white transition
             ${
               isStreaming
                 ? "bg-rose-500 hover:bg-rose-400 active:scale-95"
