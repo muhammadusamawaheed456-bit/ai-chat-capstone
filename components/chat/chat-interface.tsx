@@ -100,7 +100,7 @@ return (
   <div className="flex h-[100dvh] flex-col bg-gradient-to-b from-[#101828] via-[#0B1220] to-[#060B1A]">
 
     {/* Header */}
-    <header className="sticky top-0 z-20 border-b border-white/10 bg-gradient-to-b from-[#101828] via-[#0B1220] to-[#060B1A]/80 backdrop-blur-xl">
+    <header className="sticky top-0 z-20 border-b border-white/10 bg-[#060B1A]/80 backdrop-blur-xl">
       <div className="mx-auto flex h-16 max-w-3xl items-center justify-between px-4">
 
         <div className="flex items-center gap-3">
@@ -126,13 +126,17 @@ return (
       </div>
     </header>
 
+
+    {/* Messages */}
     <div
       ref={scrollRef}
       onScroll={handleScroll}
       className="flex-1 overflow-y-auto"
     >
       <div className="mx-auto flex w-full max-w-3xl flex-col space-y-4 px-3 pt-5 pb-4">
-          <div className="flex min-h-[60vh] flex-col items-center justify-center text-center">
+
+        {messages.length === 0 && (
+          <div className="flex min-h-[50vh] flex-col items-center justify-center text-center">
             <div className="mb-4 rounded-full bg-indigo-500/20 p-5 text-3xl">
               ✨
             </div>
@@ -152,7 +156,8 @@ return (
         {messages.map((message, i) => {
           const text = message.parts
             .filter(
-              (p): p is { type: "text"; text: string } => p.type === "text"
+              (p): p is { type: "text"; text: string } =>
+                p.type === "text"
             )
             .map((p) => p.text)
             .join("");
@@ -175,8 +180,10 @@ return (
             {error.message || "Something went wrong. Please try again."}
           </p>
         )}
+
       </div>
     </div>
+
 
     {hasNewBelowFold && !isPinnedToBottom && (
       <button
@@ -187,6 +194,7 @@ return (
       </button>
     )}
 
+
     <ChatInput
       value={input}
       onChange={setInput}
@@ -194,6 +202,7 @@ return (
       onStop={handleStop}
       isStreaming={isStreaming}
     />
+
   </div>
 );
 }
